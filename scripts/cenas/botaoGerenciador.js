@@ -4,7 +4,10 @@ class BotaoGerenciador {
     this.x = x;
     this.y = y;
     this.botao = createButton(this.texto); // função do p5
-    this.botao.mousePressed(() => this._alteraCena());
+    this.botao.mousePressed(() => {
+      this._alteraCena();
+      somIniciar.play();
+    });
     this.botao.addClass('botao-tela-inicial'); // selector do CSS
   }
   

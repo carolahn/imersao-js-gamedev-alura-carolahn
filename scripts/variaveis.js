@@ -1,5 +1,7 @@
 let imagemCenario;
 let imagemPersonagem;
+let imagemPersonagemMorta1;
+let imagemPersonagemMorta2;
 let imagemInimigo;
 let imagemInimigoGrande;
 let imagemInimigoVoador;
@@ -9,6 +11,9 @@ let fonteTelaInicial;
 let imagemVida;
 
 let somDoPulo;
+let somIniciar;
+let somColisao;
+let somGameover;
 
 let cenaAtual = 'telaInicial';
 let cenas;
@@ -26,6 +31,9 @@ let inimigo;
 let inimigoGrande;
 let inimigoVoador;
 let pontuacao;
+
+let ganhouPonto = false;
+
 
 
 
