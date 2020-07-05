@@ -4,14 +4,16 @@ class Jogo {
     
     this.mapa = fita.mapa; // vem do JSON
     
+    this.fimDeJogo = false;
+    
   }
   
   setup() {
-    cenario = new Cenario(imagemCenario, 3);
+    cenario = new Cenario(imagemCenario, 10);
     pontuacao = new Pontuacao();
     vida = new Vida(fita.configuracoes.vidaMaxima,fita.configuracoes.vidaInicial);
 
-    personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, 110, 135, 220, 270);
+    personagem = new Personagem(matrizPersonagem, imagemPersonagem, 100, 30, 110, 135, 220, 270);
     const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width-52, 30, 52, 52, 104, 104, 10);
     const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10);
     const inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width, 0, 200, 200, 400, 400, 10);
@@ -21,12 +23,17 @@ class Jogo {
     inimigos.push(inimigoVoador);
   }
   
+  
+  
   keyPressed(key) {
-    if (key === 'ArrowUp') {
+    if (!this.fimDeJogo && (key === 'ArrowUp' || key === 'click' || key === 'touch')) {
       personagem.pula();
       somDoPulo.play();
+    } else if (this.fimDeJogo && (key === 'Enter' || key === 'click' || key === 'touch')) {
+      window.location.reload();
     }
   }
+  
     
   draw() {
     //image(imagemCenario, -50, 0, width, height); // colocando duas imagens do cenario, uma colada no fim da outra
@@ -68,11 +75,44 @@ class Jogo {
       personagem.tornarInvencivel();
       
       if (vida.vidas === 0) {
-        image(imagemGameOver,width/2 - 200, height/3);
+        somDoJogo.stop();
+        somGameover.play();
+        gameOver(this); ///////////
         noLoop(); // se colidiu, pára
       }
       
-    }
-  }
+    } 
     
+  } 
+    
+}
+
+
+function gameOver(that) {
+  background('rgba(0%,0%,0%,.80)');
+  fill("fff");
+
+  textAlign(CENTER);
+  textSize(30);
+  text(`You scored ${parseInt(pontuacao.pontos)} PointS`,
+    width / 2,
+    height / 3 - 50
+  );
+  that.fimDeJogo = true;
+  personagem.stopBlinking();
+
+  image(imagemGameOver, width / 2 - 412 / 2, height / 3 - 68 / 2);
+  
+  image(imagemPersonagemMorta1,width / 2 - 200 / 2, height / 2 - 58 / 2, 200, 200);
+  // image(imagemPersonagemMorta2,width / 2 - 200 / 2, height / 2 - 58 / 2, 200, 200);
+
+  
+  
+  
+  
+  
+  textAlign(CENTER);
+  textSize(30);
+  text("Press ENTER or CLICK to play agaiN", width / 2, height / 2 + 220)
+
 }

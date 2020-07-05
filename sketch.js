@@ -16,8 +16,19 @@ function setup() {
   
 }
 
+
+
 function keyPressed() {
   jogo.keyPressed(key);
+}
+
+function mouseClicked(event) {
+  jogo.keyPressed('click');
+}
+
+function touchStarted(event) {
+  jogo.keyPressed('touch');
+  // return false;
 }
 
 function draw() {

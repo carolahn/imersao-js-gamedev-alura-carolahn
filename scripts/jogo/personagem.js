@@ -32,11 +32,23 @@ class Personagem extends Animacao{
     
   }
   
-  tornarInvencivel() { // para perder só uma vida em cada colisão
+  // tornarInvencivel() { // para perder só uma vida em cada colisão
+  //   this.invencivel = true;
+  //   somColisao.play();
+  //   setTimeout(() => {
+  //     this.invencivel = false;
+  //   }, 1000);
+  // }
+  
+  
+  tornarInvencivel() {
     this.invencivel = true;
+    this.isBlinking = true;
+    somColisao.play();
     setTimeout(() => {
-      this.invencivel = false;
-    }, 1000);
+      this.invencivel = false
+      this.stopBlinking()
+    }, 500)
   }
   
   estaColidindo(inimigo) {
