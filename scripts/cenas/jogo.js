@@ -89,30 +89,46 @@ class Jogo {
 
 
 function gameOver(that) {
-  background('rgba(0%,0%,0%,.80)');
-  fill("fff");
+  // background('rgba(0%,0%,0%,.80)');
+  // fill("fff");
 
-  textAlign(CENTER);
-  textSize(30);
-  text(`You scored ${parseInt(pontuacao.pontos)} PointS`,
-    width / 2,
-    height / 3 - 50
-  );
+  // textAlign(CENTER);
+  // textSize(30);
+  // text(`You scored ${parseInt(pontuacao.pontos)} PointS`,
+  //   width / 2,
+  //   height / 3 - 50
+  // );
+  // image(imagemGameOver, width / 2 - 412 / 2, height / 3 - 68 / 2);
+  // image(imagemPersonagemMorta1,width / 2 - 200 / 2, height / 2 - 58 / 2, 200, 200);
+  // textAlign(CENTER);
+  // textSize(30);
+  // text("Press ENTER or CLICK to play agaiN", width / 2, height / 2 + 220)
+
   that.fimDeJogo = true;
   personagem.stopBlinking();
 
-  image(imagemGameOver, width / 2 - 412 / 2, height / 3 - 68 / 2);
-  
-  image(imagemPersonagemMorta1,width / 2 - 200 / 2, height / 2 - 58 / 2, 200, 200);
-  // image(imagemPersonagemMorta2,width / 2 - 200 / 2, height / 2 - 58 / 2, 200, 200);
+  const container = document.getElementById('goCanvas');
+  container.classList = 'shown';
 
-  
-  
-  
-  
-  
-  textAlign(CENTER);
-  textSize(30);
-  text("Press ENTER or CLICK to play agaiN", width / 2, height / 2 + 220)
+  const imagem0 = document.createElement('div');
+  imagem0.classList = 'gameOverBanner';
+  container.appendChild(imagem0);
+
+  const t1 = document.createElement('div');
+  t1.innerText = `SCORE: ${parseInt(pontuacao.pontos)}`;
+  t1.id = 'score';
+  container.appendChild(t1);
+
+
+  const imagem = document.createElement('div');
+  imagem.classList = 'deathAnimation';
+  container.appendChild(imagem);
+
+
+  const t2 = document.createElement('div');
+  t2.innerText = `Press ENTER or CLICK to play again.`;
+  t2.id = 'continue';
+  container.appendChild(t2);
+
 
 }
