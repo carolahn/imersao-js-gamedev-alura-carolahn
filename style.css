@@ -3,6 +3,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 canvas {
   display: block;
@@ -33,3 +34,56 @@ canvas {
   
 }
 
+#container {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+
+}
+
+.hidden {
+  background-color: #000000;
+  position: absolute;
+}
+
+.shown {
+  background-color: #000000a8;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  /* color: rgb(255, 255, 255); */
+  /* font-size: 5rem; */
+  /* overflow: hidden; */
+  /* zoom:0.5; */
+}
+/* img {
+  width: 300px;
+  height: 300px;
+  
+} */
+
+div#score, div#continue {
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.gameOverBanner {
+  width: 412px;
+  height: 78px;
+  background: url('imagens/assets/game-over.png');
+  margin: 50px auto;
+}
+
+
+.deathAnimation {
+  width: 360px;
+  height: 360px;
+  margin: 0 auto;
+  background: url('imagens/personagem/personagem-morta-sprites2.png') left top;
+  animation: play .5s steps(2) infinite; /*2 repetições */
+}
+
+@keyframes play {
+  100% { background-position: 0 -720px; }
+}
